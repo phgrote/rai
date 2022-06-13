@@ -194,8 +194,13 @@ void Simulation::step(const arr& u_control, double tau, ControlMode u_mode) {
 }
 
 void Simulation::setMoveTo(const arr& x, double t, bool append){
+    arr path = x;
+    if(x.nd==1) path.reshape(1,x.d0);
 
-  if(append) self->ref.append(~x, {t}, time, true);
+    arr times = {t};
+    if(x.nd==2) times = range(0., t, x.d0-1);
+
+  if(append) self->ref.append(path, times, time, true);
   else self->ref.overrideSmooth(~x, {t}, time);
 }
 

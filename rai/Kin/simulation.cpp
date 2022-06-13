@@ -194,11 +194,11 @@ void Simulation::step(const arr& u_control, double tau, ControlMode u_mode) {
 }
 
 void Simulation::setMoveTo(const arr& x, double t, bool append){
-    arr path = x;
-    if(x.nd==1) path.reshape(1,x.d0);
+  arr path = x;
+  if(x.nd==1) path.reshape(1,x.d0);
 
-    arr times = {t};
-    if(x.nd==2) times = range(0., t, x.d0-1);
+  arr times = {t};
+  if(x.nd==2) times = range(0., t, x.d0-1);
 
   if(append) self->ref.append(path, times, time, true);
   else self->ref.overrideSmooth(~x, {t}, time);
@@ -456,8 +456,8 @@ struct MoveBallHereCallback:OpenGL::GLClickCall {
       std::cout << "translation in world coords is " << x << std::endl;
 
 
-    }  
-   
+    }
+
     return true;
   }
 };

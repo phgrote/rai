@@ -791,7 +791,7 @@ void glDrawFloor(float x, float r, float g, float b) {
   glVertex3f(-x, x, 0.);
   glVertex3f(-x, -x, 0.);
   glEnd();
-#if 1
+#if 0
   glColor(.75, .75, .75);
   for(int i=-4; i<=4; i++) {
     glBegin(GL_LINES);

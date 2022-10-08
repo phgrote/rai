@@ -377,7 +377,10 @@ void rai::Frame::write(std::ostream& os) const {
 //  if(parent) os <<"parent:" <<parent->name;
 
   if(joint) joint->write(os);
-  if(shape) shape->write(os);
+  if(shape) {
+      shape->write(os);
+      os << ", color:" << shape->mesh().C;
+  }
   if(inertia) inertia->write(os);
 
   StringA avoid = {"Q", "pose", "rel", "X", "from", "to", "q", "shape", "joint", "type", "color", "size", "contact", "mesh", "meshscale", "mass", "limits", "ctrl_H", "axis", "A", "B", "mimic"};
